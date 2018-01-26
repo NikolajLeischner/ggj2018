@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SunController : MonoBehaviour {
 
+	public float moveSpeed;
+
+
+
 	// Use this for initialization
 	void Start () {
 		
