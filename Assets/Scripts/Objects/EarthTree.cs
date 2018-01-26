@@ -8,7 +8,7 @@ public class EarthTree : MonoBehaviour
 	public Color color = Color.green;
 	public float height = 1;
 	float energyConsumptionPerSecond = 50;
-	float growthFactor = 0.001f;
+	float growthFactor = 0.01f;
 	// Use this for initialization
 	void Start ()
 	{
@@ -23,7 +23,6 @@ public class EarthTree : MonoBehaviour
 
 	void Update ()
 	{
-		Debug.Log (energy);
 		ConsumeEnergy ();
 		UpdateHealth ();
 	}
@@ -37,6 +36,8 @@ public class EarthTree : MonoBehaviour
 	private void UpdateHeight (float addedEnergy)
 	{
 		height = height + (addedEnergy * growthFactor);
+		var scale = transform.localScale;
+		transform.localScale = new Vector3 (scale.x, height, scale.z);
 	}
 
 	private void UpdateHealth ()

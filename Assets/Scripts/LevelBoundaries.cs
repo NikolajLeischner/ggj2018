@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class LevelBoundaries : MonoBehaviour {
 
-	public float left;
+	public BoxCollider boundaries;
 
-	public float right;
+	public float Left() {
+		return boundaries.bounds.min.x;
+	}
+
+	public float Right() {
+		return boundaries.bounds.max.x;
+	}
 }
