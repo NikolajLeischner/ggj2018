@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class SunController : MonoBehaviour
 {
-
 	public float moveSpeed = 0.25f;
 
 	public LevelBoundaries boundaries;
 
 	void Update ()
 	{
-
 		float dir = 0;
 		if (Input.GetKey (KeyCode.LeftArrow))
 			dir = -1;
@@ -26,6 +24,5 @@ public class SunController : MonoBehaviour
 			var oldPos = transform.position;
 			transform.position = new Vector3(Mathf.Clamp (boundaries.left, tentativePosition, boundaries.right), oldPos.y, oldPos.z);
 		}
-
 	}
 }
