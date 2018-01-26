@@ -8,7 +8,7 @@ public class EnergyEmitter : MonoBehaviour {
 
 	float remainingEnergy;
 
-	public Light light;
+	public Light spotLight;
 
 	Color initialColor;
 
@@ -16,12 +16,12 @@ public class EnergyEmitter : MonoBehaviour {
 
 	void Start () {
 		remainingEnergy = initialEnergy;
-		initialColor = light.color;
+		initialColor = spotLight.color;
 	}
 
 	void UpdateColor() {
 		float percentage = remainingEnergy / initialEnergy;
-		light.color = Color.Lerp (finalColor, initialColor, percentage);
+		spotLight.color = Color.Lerp (finalColor, initialColor, percentage);
 	}
 
 	public float TransmitEnergy(float demand) {

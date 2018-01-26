@@ -701,7 +701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialEnergy: 1000
-  light: {fileID: 1635448027}
+  spotLight: {fileID: 1635448027}
 --- !u!1 &1833417034
 GameObject:
   m_ObjectHideFlags: 0
