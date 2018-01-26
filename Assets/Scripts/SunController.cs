@@ -22,7 +22,7 @@ public class SunController : MonoBehaviour
 			float tentativePosition = transform.position.x + movement;
 
 			var oldPos = transform.position;
-			transform.position = new Vector3(Mathf.Clamp (boundaries.left, tentativePosition, boundaries.right), oldPos.y, oldPos.z);
+			transform.position = new Vector3 (Mathf.Clamp (boundaries.left, tentativePosition, boundaries.right), oldPos.y, oldPos.z);
 		}
 	}
 }
