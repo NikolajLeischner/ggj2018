@@ -7,41 +7,39 @@ public class EarthTree : MonoBehaviour
 	public float energy = 600000;
 	public Color color = Color.green;
 	public float height = 1;
-	int energyConsumptionPerSecond = 50;
+	float energyConsumptionPerSecond = 50;
+	float growthFactor = 0.001f;
 	// Use this for initialization
 	void Start ()
 	{
 		
 	}
 
-	public void ChangeSunEnergy(float addedEnergy) {
+	public void ChangeSunEnergy (float addedEnergy)
+	{
 		energy += addedEnergy;
-		updateHeight (addedEnergy);
+		UpdateHeight (addedEnergy);
 	}
-		
-	// Update is called once per frame
+
 	void Update ()
 	{
-
 		Debug.Log (energy);
-		// update energy
-		consumeEnergy ();
-
-		// update the health
-		updateHealth ();
+		ConsumeEnergy ();
+		UpdateHealth ();
 	}
 
-	private void consumeEnergy ()
+	private void ConsumeEnergy ()
 	{
-		energy = Mathf.Max (energy - (energyConsumptionPerSecond * Time.deltaTime), 0);
+		float consumedEnergy = energyConsumptionPerSecond * Time.deltaTime;
+		energy = Mathf.Max (energy - consumedEnergy, 0);
 	}
 
-	private void updateHeight (float addedEnergy)
+	private void UpdateHeight (float addedEnergy)
 	{
-		height = height + (addedEnergy * 0.001f);
+		height = height + (addedEnergy * growthFactor);
 	}
 
-	private void updateHealth ()
+	private void UpdateHealth ()
 	{
 		// Color.Lerp (Color.white, Color.black, 1f);
 		if (energy >= 1000) {
@@ -55,17 +53,17 @@ public class EarthTree : MonoBehaviour
 		}
 	}
 
-	public float getHeight ()
+	public float GetHeight ()
 	{
 		return height;
 	}
 
-	public Color getColor ()
+	public Color GetColor ()
 	{
 		return color;
 	}
 
-	public float getEnergy ()
+	public float GetEnergy ()
 	{
 		return energy;
 	}
