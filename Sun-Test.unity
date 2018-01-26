@@ -745,9 +745,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialEnergy: 100
   energyConsumptionPerSecond: 5
+  energyDrawnPerSecond: 5
   maxScale: 3
   minScale: 0.3
-  energyEmitter: {fileID: 1780006676}
 --- !u!136 &1833417037
 CapsuleCollider:
   m_ObjectHideFlags: 0
