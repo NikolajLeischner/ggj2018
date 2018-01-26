@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-	public Component[] earthObjects;
-	public EarthTree[] allTrees;
-	// Use this for initialization
+	EarthTree[] allTrees;
+
+	public EarthObjects earthObjects;
+
 	void Start () {
-		
+		allTrees = earthObjects.getChildren ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		earthObjects = GetComponentsInChildren<EarthObjects> ();
-		foreach (EarthObjects earthObjects in earthObjects)
-			allTrees = earthObjects.getChildren ();
 
 
 		//foreach (EarthTree earthObjects in allTrees)

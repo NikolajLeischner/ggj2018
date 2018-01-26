@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 235969074}
+  - component: {fileID: 235969075}
   m_Layer: 0
   m_Name: Plants
   m_TagString: Untagged
@@ -142,6 +143,17 @@ Transform:
   m_Father: {fileID: 1956791635}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &235969075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235969073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906c326d494c14eaaa95f7e13c1008a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &964586402
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialEnergy: 1000
+  emissionPerSecond: 100
   spotLight: {fileID: 1635448027}
 --- !u!1 &1833417034
 GameObject:
@@ -712,6 +725,7 @@ GameObject:
   - component: {fileID: 1833417035}
   - component: {fileID: 1833417036}
   - component: {fileID: 1833417037}
+  - component: {fileID: 1833417038}
   m_Layer: 0
   m_Name: Growable
   m_TagString: Untagged
@@ -744,11 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc210a97c4b341d5b64699bf4636315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialEnergy: 100
-  energyConsumptionPerSecond: 5
-  energyDrawnPerSecond: 50
-  maxScale: 3
-  minScale: 0.3
+  earthTree: {fileID: 1833417038}
 --- !u!136 &1833417037
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -762,6 +772,20 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1833417038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1833417034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82169bb7638b4f20adfb8362f7ec7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energy: 2000
+  color: {r: 0, g: 0, b: 0, a: 0}
+  height: 1
 --- !u!1 &1956791634
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,6 +795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1956791635}
   - component: {fileID: 1956791636}
+  - component: {fileID: 1956791637}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -807,3 +832,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   left: -4
   right: 4
+--- !u!114 &1956791637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1956791634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3d692e0d107b4a8c8b39159684d95c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  earthObjects: {fileID: 235969075}

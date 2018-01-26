@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EarthObjects : MonoBehaviour {
 
-	Component[] children;
-
 	// Use this for initialization
 	void Start () {
 		
