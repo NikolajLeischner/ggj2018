@@ -18,12 +18,8 @@ public class StatusBar : MonoBehaviour {
 	float minHealthy = 20;
 	float maxValue = 100;
 
-	float maxScale;
+	float maxScale = 1;
 	float minScale = 0.01f;
-
-	void Start () {
-		maxScale = barHandle.transform.lossyScale.x;
-	}
 
 	public void Initialse(float minHealthy, float maxValue, float initialValue) {
 		this.minHealthy = minHealthy;
@@ -32,6 +28,7 @@ public class StatusBar : MonoBehaviour {
 	}
 
 	public void UpdateStatus(float newValue) {
+		//Debug.Log (maxScale + " " + newValue);
 		float percentage = newValue / maxValue;
 		if (newValue > minHealthy) {
 			float range = maxValue - minHealthy;
