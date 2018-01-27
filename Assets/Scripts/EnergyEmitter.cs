@@ -50,6 +50,10 @@ public class EnergyEmitter : MonoBehaviour
 		isActive = active;
 	}
 
+	public bool IsEmitting() {
+		return isActive && (remainingEnergy > 0);
+	}
+
 	public float TransmitEnergy ()
 	{
 		if (isActive) {

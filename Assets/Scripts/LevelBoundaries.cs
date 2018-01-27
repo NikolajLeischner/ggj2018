@@ -13,4 +13,12 @@ public class LevelBoundaries : MonoBehaviour {
 	public float Right() {
 		return boundaries.bounds.max.x;
 	}
+
+	public float Top() {
+		return boundaries.bounds.max.y;
+	}
+
+	public float Bottom() {
+		return boundaries.bounds.min.y;
+	}
 }
