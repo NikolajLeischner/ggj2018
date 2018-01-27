@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EarthTree : MonoBehaviour
+public class EarthTree : EnergyReceiver
 {
 	public Transform parent; // Scale the parent object, so the tree grows in one direction.
 	public float sunEnergy = 0;
@@ -52,7 +52,7 @@ public class EarthTree : MonoBehaviour
 		waterStatus.Initialse (criticalThreshold, maxEnergy, rainEnergy);
 	}
 
-	public void AddEnergy (float addedEnergy, EnergyType energyType)
+	override public void AddEnergy (float addedEnergy, EnergyType energyType)
 	{			
 		if (energy < maxEnergy && addedEnergy > 0) {
 			if (energyType == EnergyType.Sunlight) {

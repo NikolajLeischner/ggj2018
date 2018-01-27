@@ -1749,7 +1749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc210a97c4b341d5b64699bf4636315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earthTree: {fileID: 114813707074384978}
+  energyReceiver: {fileID: 114813707074384978}
   heatEffects: {fileID: 114599403921733896}
 --- !u!114 &114599403921733896
 MonoBehaviour:

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Growable : MonoBehaviour
 {
-	public EarthTree earthTree;
+	public EnergyReceiver energyReceiver;
 
 	public HeatEffects heatEffects;
 
@@ -12,7 +12,7 @@ public class Growable : MonoBehaviour
 	{
 		var receivedEnergy = emitter.TransmitEnergy ();
 		EnergyType energyType = emitter.GetEnergyType ();
-		earthTree.AddEnergy (receivedEnergy, energyType);
+		energyReceiver.AddEnergy (receivedEnergy, energyType);
 		heatEffects.AddEnergy (receivedEnergy, energyType);
 	}
 

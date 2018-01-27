@@ -2,15 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyReceiver : MonoBehaviour {
+public abstract class EnergyReceiver : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public abstract void AddEnergy (float addedEnergy, EnergyType energyType);
 }
