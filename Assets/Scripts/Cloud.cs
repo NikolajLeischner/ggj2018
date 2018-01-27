@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Cloud : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class Cloud : MonoBehaviour
 
 	public SourceController sourceController;
 
-	MeshRenderer cloudRenderer;
+	MeshRenderer[] cloudRenderers;
+
+	public Color[] startColors;
 
 	public GameObject cloud;
 
@@ -20,6 +23,8 @@ public class Cloud : MonoBehaviour
 
 	public Color startColor = Color.white;
 
+	Color clear = new Color (1, 1, 1, 0);
+
 	float fade = 1;
 
 	float respawnCountdown = 0;
@@ -30,8 +35,10 @@ public class Cloud : MonoBehaviour
 
 	void Start ()
 	{
-		cloudRenderer = cloud.GetComponent<MeshRenderer> ();
-		cloudRenderer.material.color = startColor;
+		cloudRenderers = cloud.GetComponentsInChildren<MeshRenderer> ();
+		for (int i = 0; i < cloudRenderers.Length; ++i) {
+			cloudRenderers [i].material.color = startColors [i];
+		}
 	}
 
 	void Update ()
@@ -51,7 +58,9 @@ public class Cloud : MonoBehaviour
 				fade += change;
 			}
 			fade = Mathf.Clamp (fade, 0, 1);
-			cloudRenderer.material.color = Color.Lerp (Color.clear, startColor, fade);
+			for (int i = 0; i < cloudRenderers.Length; ++i) {
+				cloudRenderers [i].material.color = Color.Lerp (Color.clear, startColors [i], fade);
+			}
 		}
 	}
 
