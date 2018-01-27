@@ -43,7 +43,7 @@ public class EarthTree : MonoBehaviour
 		width = parent.localScale.x;
 		sunEnergy = 200;
 		rainEnergy = 200;
-		maxEnergy = 2000;
+		maxEnergy = 4000;
 		updateTotalEnergy ();
 		color = Color.white;
 
@@ -122,13 +122,23 @@ public class EarthTree : MonoBehaviour
 
 	private void UpdateLifeStatus()
 	{
-		if (energy < 500) {
+		if (energy < 10) {	// dying
 			lifeStatus = 0;
-		} else if (energy > 500 && energy <= 1000) {
+		} else if (energy <= 500) {   // critical dying
 			lifeStatus = 1;
-		} else if (energy > 1000 && energy <= 2000) {
+		} else if (energy > 500 && energy <= 1000) {	// half normal 
 			lifeStatus = 2;
-		} else {
+		} else if (energy > 1000 && energy <= 1500) {	// normal
+			lifeStatus = 3;
+		} else if (energy > 1500 && energy <= 2000) {	// healthy
+			lifeStatus = 4;
+		} else if (energy > 2000 && energy <= 2500) {	// normal
+			lifeStatus = 3;
+		} else if (energy > 2500 && energy <= 3000) {	// critical warm
+			lifeStatus = 2;
+		} else if (energy > 3000 && energy <= 3500) {	// critical warm
+			lifeStatus = 1;
+		} else {		// burning
 			lifeStatus = 0;
 		}
 	}
