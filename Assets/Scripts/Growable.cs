@@ -11,7 +11,8 @@ public class Growable : MonoBehaviour
 	void DrawEnergy (EnergyEmitter emitter)
 	{
 		var receivedEnergy = emitter.TransmitEnergy ();
-		earthTree.ChangeSunEnergy (receivedEnergy);
+		EnergyType energyType = emitter.GetEnergyType ();
+		earthTree.AddEnergy (receivedEnergy, energyType);
 		heatEffects.AddEnergy (receivedEnergy);
 	}
 

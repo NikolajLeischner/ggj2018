@@ -237,6 +237,15 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   height: 1
   width: 1
+  burning: {fileID: 8300000, guid: a8f4f1ee7d8bd4bfea9c001dbf084901, type: 3}
+  isBuringPlay: 0
+  healthy: {fileID: 8300000, guid: f997a20542eaa4dc69ff29d290514745, type: 3}
+  isHealthyPlay: 0
+  critical: {fileID: 8300000, guid: 9f9563c0b6f7d439b9f331e5755bc591, type: 3}
+  isCriticalPlay: 0
+  dying: {fileID: 8300000, guid: 217db9e8fcb7f4487b84d335e86d7579, type: 3}
+  isDyingPlay: 0
+  isPlaying: 0
 --- !u!114 &114630297087626830
 MonoBehaviour:
   m_ObjectHideFlags: 1

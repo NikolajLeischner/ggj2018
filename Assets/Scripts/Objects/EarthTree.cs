@@ -41,7 +41,7 @@ public class EarthTree : MonoBehaviour
 		color = Color.white;
 	}
 
-	public void ChangeSunEnergy (float addedEnergy)
+	public void AddEnergy (float addedEnergy, EnergyType energyType)
 	{
 		energy += addedEnergy;
 		UpdateGrowth (addedEnergy);

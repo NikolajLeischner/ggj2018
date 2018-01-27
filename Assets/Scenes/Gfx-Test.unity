@@ -1005,6 +1005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd9f5f4042b6407fb9faeccffed1fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emitter: {fileID: 0}
+  sourceController: {fileID: 0}
   cloudMaterial: {fileID: 2100000, guid: ff649055a816348e29ed1aa24067cf0f, type: 2}
   cloud: {fileID: 501577857}
   fadeTimeInSeconds: 3
@@ -1674,7 +1676,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 7bf0f585e5fbc4f2cad23feba8414818, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 7bf0f585e5fbc4f2cad23feba8414818, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1948246119 stripped
@@ -1742,6 +1745,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earthObjects: {fileID: 235969075}
   gameMenu: {fileID: 1462139144}
+  levelNumber: 1
+  maxScore: 0
+  score: 0
+  timer: 0
 --- !u!65 &1956791638
 BoxCollider:
   m_ObjectHideFlags: 0
