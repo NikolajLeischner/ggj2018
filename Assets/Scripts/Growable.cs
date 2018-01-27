@@ -16,6 +16,7 @@ public class Growable : MonoBehaviour
 	{
 		var emitter = collider.gameObject.GetComponentInParent<EnergyEmitter> ();
 		if (emitter) {
+			Debug.Log ("..");
 			DrawEnergy (emitter);
 		}
 	}
