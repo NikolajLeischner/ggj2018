@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class SourceController : MonoBehaviour
 {
-	public float moveSpeed = 0.25f;
+	public float horizontalSpeed = 0.25f;
+
+	float verticalSpeed = 0f;
 
 	public KeyCode moveLeft = KeyCode.LeftArrow;
 
 	public KeyCode moveRight = KeyCode.RightArrow;
+
+	KeyCode moveUp = KeyCode.UpArrow;
+
+	KeyCode moveDown = KeyCode.DownArrow;
 
 	public LevelBoundaries boundaries;
 
@@ -22,28 +28,38 @@ public class SourceController : MonoBehaviour
 	public void MoveToRandomPosition ()
 	{
 		float randomPosition = Random.Range (boundaries.Left (), boundaries.Right ());
-		UpdatePosition (randomPosition);
+		float middle = (boundaries.Top () + boundaries.Bottom ()) * 0.5f;
+		UpdatePosition (randomPosition, transform.position.y);
 	}
 
-	void UpdatePosition (float position)
+	void UpdatePosition (float x, float y)
 	{
 		var oldPos = transform.position;
-		transform.position = new Vector3 (Mathf.Clamp (boundaries.Left (), position, boundaries.Right ()), oldPos.y, oldPos.z);
+		float actualX = Mathf.Clamp (boundaries.Left (), x, boundaries.Right ());
+		float actualY = Mathf.Clamp (boundaries.Bottom (), y, boundaries.Top ());
+		transform.position = new Vector3 (actualX, actualY, oldPos.z);
 	}
 
 	void Update ()
 	{
 		if (isActive) {
-			float dir = 0;
+			float horizontal = 0;
 			if (Input.GetKey (moveLeft))
-				dir = -1;
+				horizontal = -1;
 			else if (Input.GetKey (moveRight))
-				dir = 1;
+				horizontal = 1;
+			float vertical = 0;
+			if (Input.GetKey (moveDown))
+				vertical = -1;
+			else if (Input.GetKey (moveUp))
+				vertical = 1;
 
-			if (dir != 0) {
-				float movement = dir * moveSpeed * Time.deltaTime;
-				float tentativePosition = transform.position.x + movement;
-				UpdatePosition (tentativePosition);
+			if (horizontal != 0) {
+				float movementX = horizontal * horizontalSpeed * Time.deltaTime;
+				float movementY = vertical * verticalSpeed * Time.deltaTime;
+				float tentativeX = transform.position.x + movementX;
+				float tentativeY = transform.position.y + movementY;
+				UpdatePosition (tentativeX, tentativeY);
 			}
 		}
 	}

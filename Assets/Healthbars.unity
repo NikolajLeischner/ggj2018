@@ -933,9 +933,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a498d10ebb848b0bfcfd6e1dfee3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  horizontalSpeed: 4
+  verticalSpeed: 0
   moveLeft: 97
   moveRight: 100
+  moveUp: 273
+  moveDown: 274
   boundaries: {fileID: 1956791636}
 --- !u!114 &1403600288
 MonoBehaviour:
@@ -1176,7 +1179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4681614592558086, guid: 74870220b2312864695935f49c8329c3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.2400002
+      value: -5.63
       objectReference: {fileID: 0}
     - target: {fileID: 4681614592558086, guid: 74870220b2312864695935f49c8329c3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1200,6 +1203,50 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4681614592558086, guid: 74870220b2312864695935f49c8329c3, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921192943974692, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921192943974692, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921192943974692, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.117
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962025734465294, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962025734465294, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962025734465294, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921192943974692, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.0025999832
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928961876839724, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928961876839724, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928961876839724, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773380823095678, guid: 74870220b2312864695935f49c8329c3, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1405,9 +1452,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a498d10ebb848b0bfcfd6e1dfee3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  horizontalSpeed: 4
+  verticalSpeed: 0
   moveLeft: 276
   moveRight: 275
+  moveUp: 273
+  moveDown: 274
   boundaries: {fileID: 1956791636}
 --- !u!4 &1780006675
 Transform:
@@ -1531,7 +1581,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 20, y: 8, z: 4}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 6.58, z: 0}
 --- !u!1 &2043520831
 GameObject:
   m_ObjectHideFlags: 0
