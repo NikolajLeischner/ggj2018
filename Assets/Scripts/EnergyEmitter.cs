@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnergyType
+{
+	Sunlight,
+	Rain
+}
+
 public class EnergyEmitter : MonoBehaviour
 {
 
 	public float initialEnergy = 1000000;
 
 	public float emissionPerSecond = 100;
+
+	public EnergyType energyType = EnergyType.Sunlight;
 
 	float remainingEnergy;
 
@@ -17,26 +25,43 @@ public class EnergyEmitter : MonoBehaviour
 
 	Color finalColor = Color.red;
 
+	bool isActive = true;
+
 	void Start ()
 	{
 		remainingEnergy = initialEnergy;
-		initialColor = spotLight.color;
+		if (spotLight)
+			initialColor = spotLight.color;
 	}
 
 	void UpdateColor ()
 	{
 		float percentage = remainingEnergy / initialEnergy;
-		spotLight.color = Color.Lerp (finalColor, initialColor, percentage);
+		if (spotLight)
+			spotLight.color = Color.Lerp (finalColor, initialColor, percentage);
+	}
+
+	public EnergyType GetEnergyType ()
+	{
+		return energyType;
+	}
+
+	public void Toggle(bool active) {
+		isActive = active;
 	}
 
 	public float TransmitEnergy ()
 	{
-		float demand = emissionPerSecond * Time.deltaTime;
-		float provided = Mathf.Min (remainingEnergy, demand);
-		remainingEnergy = Mathf.Max (0, remainingEnergy - provided);
+		if (isActive) {
+			float demand = emissionPerSecond * Time.deltaTime;
+			float provided = Mathf.Min (remainingEnergy, demand);
+			remainingEnergy = Mathf.Max (0, remainingEnergy - provided);
 
-		UpdateColor ();
+			UpdateColor ();
 
-		return provided;
+			return provided;
+		} else {
+			return 0;
+		}
 	}
 }
