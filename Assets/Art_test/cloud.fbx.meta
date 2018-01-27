@@ -1,101 +1,24 @@
 fileFormatVersion: 2
-guid: 2a1925ac16e3ab14dbdd04c7c2524b5d
-timeCreated: 1517067542
+guid: 08e5238c3e83c1240bf23be541ec448f
+timeCreated: 1517072238
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: "gew\xE4chse"
-    100002: gras
-    100004: gras1
-    100006: gras2
-    100008: "gro\xDF_krone"
-    100010: klein_krone
-    100012: liane
-    100014: liane1
-    100016: liane2
-    100018: liane3
-    100020: liane4
-    100022: liane5
-    100024: liane6
-    100026: mittel_krone
-    100028: //RootNode
-    100030: Treestunk
-    400000: "gew\xE4chse"
-    400002: gras
-    400004: gras1
-    400006: gras2
-    400008: "gro\xDF_krone"
-    400010: klein_krone
-    400012: liane
-    400014: liane1
-    400016: liane2
-    400018: liane3
-    400020: liane4
-    400022: liane5
-    400024: liane6
-    400026: mittel_krone
-    400028: //RootNode
-    400030: Treestunk
-    2100000: Trunk
-    2100002: Foliage
-    2100004: Liane4
-    2100006: Liane2
-    2100008: Liane3
-    2100010: Liane5
-    2100012: Liane6
-    2100014: Liane1
-    2100016: Grass2
-    2100018: Grass3
-    2100020: Grass1
-    2100022: Krone_mittel
-    2100024: "Krone_gro\xDF"
-    2100026: Krone_klein
-    2300000: "gew\xE4chse"
-    2300002: gras
-    2300004: gras1
-    2300006: gras2
-    2300008: "gro\xDF_krone"
-    2300010: klein_krone
-    2300012: liane
-    2300014: liane1
-    2300016: liane2
-    2300018: liane3
-    2300020: liane4
-    2300022: liane5
-    2300024: liane6
-    2300026: mittel_krone
-    2300028: Treestunk
-    3300000: "gew\xE4chse"
-    3300002: gras
-    3300004: gras1
-    3300006: gras2
-    3300008: "gro\xDF_krone"
-    3300010: klein_krone
-    3300012: liane
-    3300014: liane1
-    3300016: liane2
-    3300018: liane3
-    3300020: liane4
-    3300022: liane5
-    3300024: liane6
-    3300026: mittel_krone
-    3300028: Treestunk
-    4300000: Treestunk
-    4300002: "gew\xE4chse"
-    4300004: liane
-    4300006: liane5
-    4300008: liane4
-    4300010: liane3
-    4300012: liane2
-    4300014: liane1
-    4300016: gras
-    4300018: gras1
-    4300020: gras2
-    4300022: mittel_krone
-    4300024: "gro\xDF_krone"
-    4300026: klein_krone
-    4300028: liane6
+    100000: //RootNode
+    100002: redcloud
+    100004: whitecloud
+    400000: //RootNode
+    400002: redcloud
+    400004: whitecloud
+    2100000: lambert3
+    2100002: lambert4
+    2300000: redcloud
+    2300002: whitecloud
+    3300000: redcloud
+    3300002: whitecloud
+    4300000: whitecloud
+    4300002: redcloud
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -152,7 +75,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

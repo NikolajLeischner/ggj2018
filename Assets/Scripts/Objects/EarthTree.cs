@@ -5,10 +5,10 @@ using UnityEngine;
 public class EarthTree : MonoBehaviour
 {
 	public Transform parent; // Scale the parent object, so the tree grows in one direction.
-	public MeshRenderer renderer;  // the material 
 	public float sunEnergy = 0;
 	public float rainEnergy = 0;
 	public float energy = 0;
+	public MeshRenderer treeMesh;
 	public float maxEnergy = 2000;
 	public Color color = Color.green;
 	public float height = 1;
@@ -17,6 +17,9 @@ public class EarthTree : MonoBehaviour
 	float heightFactor = 0.00005f;
 	float widthFactor = 0.00003f;
 	int lifeStatus = 0;
+
+	public StatusBar sunStatus;
+	public StatusBar waterStatus;
 
 
 	public AudioClip burning;
@@ -38,11 +41,15 @@ public class EarthTree : MonoBehaviour
 	{
 		height = parent.localScale.y;
 		width = parent.localScale.x;
-		sunEnergy = 100;
-		rainEnergy = 50;
+		sunEnergy = 200;
+		rainEnergy = 200;
 		maxEnergy = 2000;
 		updateTotalEnergy ();
 		color = Color.white;
+
+		float criticalThreshold = 50;
+		sunStatus.Initialse (criticalThreshold, maxEnergy, sunEnergy);
+		waterStatus.Initialse (criticalThreshold, maxEnergy, rainEnergy);
 	}
 
 	public void AddEnergy (float addedEnergy, EnergyType energyType)
@@ -61,11 +68,13 @@ public class EarthTree : MonoBehaviour
 	public void updateRainEnergy(float addedEnergy)
 	{
 		rainEnergy += addedEnergy;
+		waterStatus.UpdateStatus (rainEnergy);
 	}
 
 	public void updateSunEnergy(float addedEnergy)
 	{
 		sunEnergy += addedEnergy;
+		sunStatus.UpdateStatus (sunEnergy);
 	}
 
 	public void updateTotalEnergy()
@@ -78,8 +87,7 @@ public class EarthTree : MonoBehaviour
 		if (energy < maxEnergy) {
 			ConsumeEnergy ();
 			UpdateHealth ();
-		} 
-
+		}
 	}
 
 	private void ConsumeEnergy ()
@@ -109,7 +117,7 @@ public class EarthTree : MonoBehaviour
 	{
 		float hue = sunEnergy / maxEnergy;
 		color = Color.Lerp(Color.black, Color.green, hue);
-		renderer.material.color = color;   
+		treeMesh.material.color = color;
 	}
 
 	private void UpdateLifeStatus()
