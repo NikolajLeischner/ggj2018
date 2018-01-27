@@ -539,7 +539,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 964586402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.25, z: -13}
+  m_LocalPosition: {x: 0, y: 5.25, z: -13.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -955,7 +955,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1403600284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.22, z: 0}
+  m_LocalPosition: {x: -6.87, y: 8.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1948246119}
@@ -1005,11 +1005,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd9f5f4042b6407fb9faeccffed1fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitter: {fileID: 0}
-  sourceController: {fileID: 0}
-  cloudMaterial: {fileID: 2100000, guid: ff649055a816348e29ed1aa24067cf0f, type: 2}
+  emitter: {fileID: 1403600286}
+  sourceController: {fileID: 1403600287}
   cloud: {fileID: 501577857}
+  disappearPrefab: {fileID: 1449068164564576, guid: 268986b8571f84329b4212d928e67bc0,
+    type: 2}
   fadeTimeInSeconds: 3
+  respawnTimeInSeconds: 2
+  startColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!54 &1403600289
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1035,7 +1038,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1462139142
 GameObject:
@@ -1450,7 +1453,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1828783738
 Prefab:
@@ -1749,6 +1752,8 @@ MonoBehaviour:
   maxScore: 0
   score: 0
   timer: 0
+  currentTime: 0
+  gameFinished: 0
 --- !u!65 &1956791638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1759,7 +1764,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16, y: 8, z: 4}
+  m_Size: {x: 20, y: 8, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2043520831
 GameObject:

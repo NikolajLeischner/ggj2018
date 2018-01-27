@@ -19,6 +19,18 @@ public class SourceController : MonoBehaviour
 		isActive = active;
 	}
 
+	public void MoveToRandomPosition ()
+	{
+		float randomPosition = Random.Range (boundaries.Left (), boundaries.Right ());
+		UpdatePosition (randomPosition);
+	}
+
+	void UpdatePosition (float position)
+	{
+		var oldPos = transform.position;
+		transform.position = new Vector3 (Mathf.Clamp (boundaries.Left (), position, boundaries.Right ()), oldPos.y, oldPos.z);
+	}
+
 	void Update ()
 	{
 		if (isActive) {
@@ -30,11 +42,8 @@ public class SourceController : MonoBehaviour
 
 			if (dir != 0) {
 				float movement = dir * moveSpeed * Time.deltaTime;
-
 				float tentativePosition = transform.position.x + movement;
-
-				var oldPos = transform.position;
-				transform.position = new Vector3 (Mathf.Clamp (boundaries.Left (), tentativePosition, boundaries.Right ()), oldPos.y, oldPos.z);
+				UpdatePosition (tentativePosition);
 			}
 		}
 	}

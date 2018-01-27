@@ -8,38 +8,75 @@ public class Cloud : MonoBehaviour
 
 	public SourceController sourceController;
 
-	public Material cloudMaterial;
+	MeshRenderer cloudRenderer;
 
 	public GameObject cloud;
 
+	public GameObject disappearPrefab;
+
 	public float fadeTimeInSeconds = 3;
+
+	public float respawnTimeInSeconds = 2;
+
+	public Color startColor = Color.white;
 
 	float fade = 1;
 
-	Color startColor;
+	float respawnCountdown = 0;
 
 	bool isHitBySun = false;
 
+	bool respawning = false;
+
 	void Start ()
 	{
-		startColor = cloudMaterial.color;
+		cloudRenderer = cloud.GetComponent<MeshRenderer> ();
+		cloudRenderer.material.color = startColor;
 	}
 
 	void Update ()
 	{
-		float change = (1 / fadeTimeInSeconds) * Time.deltaTime;
-		if (isHitBySun) {
-			fade -= change;
+		if (fade == 0 && !respawning) {
+			Hide ();
+		} else if (respawning) {
+			respawnCountdown -= (1 / respawnTimeInSeconds) * Time.deltaTime;
+
+			if (respawnCountdown <= 0)
+				Respawn ();
 		} else {
-			fade += change;
+			float change = (1 / fadeTimeInSeconds) * Time.deltaTime;
+			if (isHitBySun) {
+				fade -= change;
+			} else {
+				fade += change;
+			}
+			fade = Mathf.Clamp (fade, 0, 1);
+			cloudRenderer.material.color = Color.Lerp (Color.clear, startColor, fade);
 		}
-		fade = Mathf.Clamp (fade, 0, 1);
-		cloudMaterial.color = Color.Lerp (Color.clear, startColor, fade);
 	}
 
-	void Toggle(bool active) {
+	void Hide ()
+	{
+		respawning = true;
+		respawnCountdown = respawnTimeInSeconds;
+		var go = Instantiate (disappearPrefab);
+		go.transform.position = cloud.transform.position;
+		Toggle (false);
+	}
+
+	void Respawn ()
+	{
+		fade = 0.05f;
+		respawning = false;
+		sourceController.MoveToRandomPosition ();
+		Toggle (true);
+	}
+
+	void Toggle (bool active)
+	{
 		sourceController.Toggle (active);
 		emitter.Toggle (active);
+		cloud.SetActive (active);
 	}
 
 	void OnTriggerEnter (Collider collider)
