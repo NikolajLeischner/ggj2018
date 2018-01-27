@@ -13,7 +13,7 @@ public class Growable : MonoBehaviour
 		var receivedEnergy = emitter.TransmitEnergy ();
 		EnergyType energyType = emitter.GetEnergyType ();
 		earthTree.AddEnergy (receivedEnergy, energyType);
-		heatEffects.AddEnergy (receivedEnergy);
+		heatEffects.AddEnergy (receivedEnergy, energyType);
 	}
 
 	void OnTriggerStay (Collider collider)

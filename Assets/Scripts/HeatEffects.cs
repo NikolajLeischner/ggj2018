@@ -36,7 +36,7 @@ public class HeatEffects : MonoBehaviour
 		}
 	}
 
-	public void AddEnergy(float addedEnergy) {
+	public void AddEnergy(float addedEnergy, EnergyType energyType) {
 		UpdateHeat(addedEnergy * heatFactor);
 	}
 

@@ -6,14 +6,16 @@ public class EarthTree : MonoBehaviour
 {
 	public Transform parent; // Scale the parent object, so the tree grows in one direction.
 	public MeshRenderer renderer;  // the material 
-	public float energy = 600000;
+	public float sunEnergy = 0;
+	public float rainEnergy = 0;
+	public float energy = 0;
 	public float maxEnergy = 2000;
 	public Color color = Color.green;
 	public float height = 1;
 	public float width = 1;
 	float energyConsumptionPerSecond = 50;
-	float heightFactor = 0.0005f;
-	float widthFactor = 0.0003f;
+	float heightFactor = 0.00005f;
+	float widthFactor = 0.00003f;
 	int lifeStatus = 0;
 
 
@@ -36,21 +38,48 @@ public class EarthTree : MonoBehaviour
 	{
 		height = parent.localScale.y;
 		width = parent.localScale.x;
-		energy = 100;
+		sunEnergy = 100;
+		rainEnergy = 50;
 		maxEnergy = 2000;
+		updateTotalEnergy ();
 		color = Color.white;
 	}
 
 	public void AddEnergy (float addedEnergy, EnergyType energyType)
+	{			
+		if (energy < maxEnergy && addedEnergy > 0) {
+			if (energyType == EnergyType.Sunlight) {
+				updateSunEnergy (addedEnergy);
+			} else if (energyType == EnergyType.Rain) {
+				updateRainEnergy (addedEnergy);
+			}
+			UpdateGrowth ();
+		}
+		updateTotalEnergy ();
+	}
+
+	public void updateRainEnergy(float addedEnergy)
 	{
-		energy += addedEnergy;
-		UpdateGrowth (addedEnergy);
+		rainEnergy += addedEnergy;
+	}
+
+	public void updateSunEnergy(float addedEnergy)
+	{
+		sunEnergy += addedEnergy;
+	}
+
+	public void updateTotalEnergy()
+	{
+		energy = sunEnergy + rainEnergy;
 	}
 
 	void Update ()
 	{
-		ConsumeEnergy ();
-		UpdateHealth ();
+		if (energy < maxEnergy) {
+			ConsumeEnergy ();
+			UpdateHealth ();
+		} 
+
 	}
 
 	private void ConsumeEnergy ()
@@ -59,10 +88,10 @@ public class EarthTree : MonoBehaviour
 		energy = Mathf.Max (energy - consumedEnergy, 0);
 	}
 
-	private void UpdateGrowth (float addedEnergy)
+	private void UpdateGrowth ()
 	{
-		height = height + (addedEnergy * heightFactor);
-		width = width + (addedEnergy * widthFactor);
+		height = height + (energy * heightFactor) * Time.deltaTime;
+		width = width + (energy * widthFactor) * Time.deltaTime;
 		var scale = parent.localScale;
 		parent.localScale = new Vector3 (width, height, scale.z);
 	}
@@ -78,7 +107,7 @@ public class EarthTree : MonoBehaviour
 
 	private void ComputeColor()
 	{
-		float hue = energy / maxEnergy;
+		float hue = sunEnergy / maxEnergy;
 		color = Color.Lerp(Color.black, Color.green, hue);
 		renderer.material.color = color;   
 	}
@@ -116,8 +145,8 @@ public class EarthTree : MonoBehaviour
 		return color;
 	}
 
-	public float GetEnergy ()
+	public float GetSunEnergy ()
 	{
-		return energy;
+		return sunEnergy;
 	}
 }

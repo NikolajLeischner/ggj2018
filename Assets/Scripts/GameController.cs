@@ -20,10 +20,7 @@ public class GameController : MonoBehaviour {
 		allTrees = earthObjects.getChildren ();
 		maxScore = allTrees.Length * allTrees.Length * 2 * timer; 
 		Debug.Log (maxScore);
-		Debug.Log (timer);
 		currentTime = Time.realtimeSinceStartup;
-		Debug.Log (currentTime);
-
 	}
 		
 	void Update () {

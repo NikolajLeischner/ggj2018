@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -459,6 +459,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4058493949457846, guid: 0cc712624cfcf4cf68b83d5dace4177f, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114024575448202968, guid: 0cc712624cfcf4cf68b83d5dace4177f,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -955,7 +960,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1403600284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.87, y: 8.22, z: 0}
+  m_LocalPosition: {x: -7.99, y: 8.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1948246119}
@@ -1211,7 +1216,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1501641739}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -0.05, y: 3.08, z: 0.09}
+  m_LocalPosition: {x: 22.58, y: 6.69, z: 13.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1625,11 +1630,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7bf0f585e5fbc4f2cad23feba8414818, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.09
+      value: -2.15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7bf0f585e5fbc4f2cad23feba8414818, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.76
+      value: -0.74
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7bf0f585e5fbc4f2cad23feba8414818, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1751,7 +1756,7 @@ MonoBehaviour:
   levelNumber: 1
   maxScore: 0
   score: 0
-  timer: 0
+  timer: 10
   currentTime: 0
   gameFinished: 0
 --- !u!65 &1956791638
