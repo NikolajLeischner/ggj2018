@@ -22,8 +22,6 @@ public class GameController : MonoBehaviour {
 		Debug.Log (maxScore);
 		Debug.Log (timer);
 		currentTime = Time.realtimeSinceStartup;
-		Debug.Log (currentTime);
-
 	}
 		
 	void Update () {

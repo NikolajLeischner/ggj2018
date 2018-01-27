@@ -10,9 +10,9 @@ public class StatusBar : MonoBehaviour {
 
 	public Color criticalColor = Color.red;
 
-	public GameObject bar;
+	public GameObject barHandle;
 
-	MeshRenderer barRenderer;
+	public MeshRenderer barRenderer;
 
 	float minValue = 0;
 	float minHealthy = 20;
@@ -22,8 +22,7 @@ public class StatusBar : MonoBehaviour {
 	float minScale = 0.01f;
 
 	void Start () {
-		maxScale = bar.transform.lossyScale.x;
-		barRenderer = bar.GetComponent<MeshRenderer> ();
+		maxScale = barHandle.transform.lossyScale.x;
 	}
 
 	public void Initialse(float minHealthy, float maxValue, float initialValue) {
@@ -45,7 +44,7 @@ public class StatusBar : MonoBehaviour {
 		}
 
 		float newScale = Mathf.Lerp (minScale, maxScale, percentage);
-		var scale = bar.transform.lossyScale;
-		bar.transform.localScale = new Vector3 (newScale, scale.y, scale.z);
+		var scale = barHandle.transform.lossyScale;
+		barHandle.transform.localScale = new Vector3 (newScale, scale.y, scale.z);
 	}
 }
