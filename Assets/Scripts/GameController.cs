@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+	public EnergyEmitter emitter;
+
 	public EarthObjects earthObjects;
 	private EarthTree[] allTrees;
 	public GameMenu gameMenu;
@@ -15,12 +17,18 @@ public class GameController : MonoBehaviour {
 	public float timer = 0;
 	public float currentTime = 0;
 	public bool gameFinished = false;
+	public int healthyEnergy = 3500;
+	float elapsed = 0f;
 
 	void Start () {
 		allTrees = earthObjects.getChildren ();
-		maxScore = allTrees.Length * allTrees.Length * 2 * timer; 
-		Debug.Log (maxScore);
+		maxScore = allTrees.Length * allTrees.Length * 4 * timer; 
 		currentTime = Time.realtimeSinceStartup;
+
+		// initialize sun initial energy and immitter rate
+		float initialEnergy = allTrees.Length * healthyEnergy;
+		emitter.initialize(initialEnergy);
+		emitter.emissionPerSecond = initialEnergy / timer;
 	}
 		
 	void Update () {
@@ -45,9 +53,14 @@ public class GameController : MonoBehaviour {
 
 	public void ComputeScore()
 	{
-		// iterate over all trees and compute increment scors.
-		foreach (EarthTree tree in allTrees) {
-			score += tree.getLifeStatus ();
+		elapsed += Time.deltaTime;
+		if (elapsed >= 1f) {
+			elapsed = elapsed % 1f;
+
+			// iterate over all trees and compute increment scors.
+			foreach (EarthTree tree in allTrees) {
+				score += tree.getLifeStatus ();
+			}		
 		}
 	} 
 }

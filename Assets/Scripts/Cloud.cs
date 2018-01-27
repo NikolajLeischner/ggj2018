@@ -37,6 +37,8 @@ public class Cloud : MonoBehaviour
 		for (int i = 0; i < cloudRenderers.Length; ++i) {
 			cloudRenderers [i].material.color = startColors [i];
 		}
+
+		emitter.initialize (50000);
 	}
 
 	void Update ()

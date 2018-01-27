@@ -11,10 +11,8 @@ public enum EnergyType
 public class EnergyEmitter : MonoBehaviour
 {
 
-	public float initialEnergy = 1000000;
-
 	public float emissionPerSecond = 100;
-
+	public float initialEnergy = 0;
 	public EnergyType energyType = EnergyType.Sunlight;
 
 	float remainingEnergy;
@@ -27,8 +25,9 @@ public class EnergyEmitter : MonoBehaviour
 
 	bool isActive = true;
 
-	void Start ()
+	public void initialize (float startEnergy)
 	{
+		initialEnergy = startEnergy;
 		remainingEnergy = initialEnergy;
 		if (spotLight)
 			initialColor = spotLight.color;
