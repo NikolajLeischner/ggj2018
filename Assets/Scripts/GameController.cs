@@ -10,13 +10,20 @@ public class GameController : MonoBehaviour {
 
 	// game related 
 	public int levelNumber = 1;
-	public int maxScore = 0;
+	public float maxScore = 0;
 	public int score = 0;
-	public double timer = 0;
-	bool gameFinished = false;
+	public float timer = 0;
+	public float currentTime = 0;
+	public bool gameFinished = false;
+
 	void Start () {
 		allTrees = earthObjects.getChildren ();
-		maxScore = allTrees.Length * 2;
+		maxScore = allTrees.Length * allTrees.Length * 2 * timer; 
+		Debug.Log (maxScore);
+		Debug.Log (timer);
+		currentTime = Time.realtimeSinceStartup;
+		Debug.Log (currentTime);
+
 	}
 		
 	void Update () {
@@ -24,22 +31,24 @@ public class GameController : MonoBehaviour {
 			bool menuIsActive = gameMenu.gameObject.activeSelf;
 			gameMenu.gameObject.SetActive (!menuIsActive);
 		}
-			
-		if (timer < 0 && gameFinished == false) {
-			ComputeScore ();
+
+		// compute the score during the game
+		ComputeScore ();
+
+		// check if the timer is finished
+		if (currentTime > timer && gameFinished == false) {
 			string result = "you got(" + score.ToString() + ")out of " + maxScore.ToString() + "score";
 			Debug.Log(result);
 			gameFinished = true;
-		} else {
-			// update the timer
-			timer = timer - (Time.deltaTime * 2);
 		}
+
+		// update timer
+		currentTime = Time.realtimeSinceStartup;
 	}
 
 	public void ComputeScore()
 	{
-		// get the earth objects
-		Debug.Log (allTrees.Length);
+		// iterate over all trees and compute increment scors.
 		foreach (EarthTree tree in allTrees) {
 			score += tree.getLifeStatus ();
 		}
