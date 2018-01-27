@@ -5,21 +5,46 @@ using UnityEngine;
 public class EarthTree : MonoBehaviour
 {
 	public Transform parent; // Scale the parent object, so the tree grows in one direction.
+	public MeshRenderer renderer;  // the material 
 	public float energy = 600000;
+	public float maxEnergy = 2000;
 	public Color color = Color.green;
 	public float height = 1;
+	public float width = 1;
 	float energyConsumptionPerSecond = 50;
-	float growthFactor = 0.0005f;
-	// Use this for initialization
+	float heightFactor = 0.0005f;
+	float widthFactor = 0.0003f;
+	int lifeStatus = 0;
+
+
+	public AudioClip burning;
+	public bool isBuringPlay;
+
+	public AudioClip healthy;
+	public bool isHealthyPlay;
+
+	public AudioClip critical;
+	public bool isCriticalPlay;
+
+	public AudioClip dying;
+	public bool isDyingPlay;
+
+	public bool isPlaying;
+	AudioSource mySource;
+
 	void Start ()
 	{
 		height = parent.localScale.y;
+		width = parent.localScale.x;
+		energy = 100;
+		maxEnergy = 2000;
+		color = Color.white;
 	}
 
 	public void ChangeSunEnergy (float addedEnergy)
 	{
 		energy += addedEnergy;
-		UpdateHeight (addedEnergy);
+		UpdateGrowth (addedEnergy);
 	}
 
 	void Update ()
@@ -34,25 +59,51 @@ public class EarthTree : MonoBehaviour
 		energy = Mathf.Max (energy - consumedEnergy, 0);
 	}
 
-	private void UpdateHeight (float addedEnergy)
+	private void UpdateGrowth (float addedEnergy)
 	{
-		height = height + (addedEnergy * growthFactor);
+		height = height + (addedEnergy * heightFactor);
+		width = width + (addedEnergy * widthFactor);
 		var scale = parent.localScale;
-		parent.localScale = new Vector3 (scale.x, height, scale.z);
+		parent.localScale = new Vector3 (width, height, scale.z);
 	}
 
 	private void UpdateHealth ()
 	{
-		// Color.Lerp (Color.white, Color.black, 1f);
-		if (energy >= 1000) {
-			color = Color.green;   // green
-		} else if (energy > 500) {
-			color = new Color (1, 0, 1, 1);   // magenta
-		} else if (energy > 100) {
-			color = new Color (1, 0, 1, 1);   // gray
+		// compute tree color
+		ComputeColor();
+
+		// check status
+		UpdateLifeStatus();
+	}
+
+	private void ComputeColor()
+	{
+		float hue = energy / maxEnergy;
+		color = Color.Lerp(Color.black, Color.green, hue);
+		renderer.material.color = color;   
+	}
+
+	private void UpdateLifeStatus()
+	{
+		if (energy < 500) {
+			lifeStatus = 0;
+		} else if (energy > 500 && energy <= 1000) {
+			lifeStatus = 1;
+		} else if (energy > 1000 && energy <= 2000) {
+			lifeStatus = 2;
 		} else {
-			color = Color.gray;
+			lifeStatus = 0;
 		}
+	}
+
+	private void PlaySound(AudioClip clip) {
+		mySource.clip = clip;
+		mySource.Play ();
+	}
+
+	public int getLifeStatus()
+	{
+		return lifeStatus;
 	}
 
 	public float GetHeight ()
