@@ -10,6 +10,10 @@ public class GameMenu : MonoBehaviour
 		Scenes.INSTANCE.ReloadCurrentLevel ();
 	}
 
+	public void RestartGame() {
+		Scenes.INSTANCE.LoadFirstLevel ();
+	}
+
 	public void Exit() {
 		Application.Quit ();
 	}
