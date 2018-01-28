@@ -21,7 +21,8 @@ public class EarthTree : EnergyReceiver
 	public StatusBar sunStatus;
 	public StatusBar waterStatus;
 
-
+	float maxHeight = 1;
+	float maxWidth = 1;
 
 	// audio
 	public AudioClip burning;
@@ -82,7 +83,6 @@ public class EarthTree : EnergyReceiver
 
 	void Update ()
 	{
-		Debug.Log (lifeStatus);
 		if (lifeStatus > 0) {
 			ConsumeEnergy ();
 			ComputeColor();
@@ -98,8 +98,14 @@ public class EarthTree : EnergyReceiver
 
 	private void UpdateGrowth ()
 	{
-		height = height + heightFactor * Time.deltaTime;
-		width = width + widthFactor * Time.deltaTime;
+		if (height < maxHeight) {
+			height = height + heightFactor * Time.deltaTime;
+		}
+		if (width < maxWidth) {
+			width = width + widthFactor * Time.deltaTime;
+		}
+		Debug.Log (height);
+		// compute the scale
 		var scale = parent.localScale;
 		parent.localScale = new Vector3 (width, height, scale.z);
 	}
