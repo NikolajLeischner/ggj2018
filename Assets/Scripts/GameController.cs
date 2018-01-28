@@ -19,8 +19,8 @@ public class GameController : MonoBehaviour {
 	float elapsed = 0f;
 
 	void Start () {
-		
-
+		allTrees =  earthObjects.getChildren ();
+		maxScore = allTrees.Length * allTrees.Length * 4 * timer; 
 	}
 		
 	void Update () {

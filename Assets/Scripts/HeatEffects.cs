@@ -7,7 +7,7 @@ public class HeatEffects : MonoBehaviour
 
 	public ParticleSystem flames;
 
-	float maxEmissionRate = 20;
+	public float maxEmissionRate = 20;
 
 	float minEmissionRate = 0.1f;
 
@@ -36,19 +36,22 @@ public class HeatEffects : MonoBehaviour
 		}
 	}
 
-	public void AddEnergy(float addedEnergy, EnergyType energyType) {
-		float finalEnergy = (energyType == EnergyType.Sunlight) ? addedEnergy : (-1 * addedEnergy);
-		UpdateHeat(finalEnergy * heatFactor);
+	public void AddEnergy (float addedEnergy, EnergyType energyType)
+	{
+		float dir = energyType == EnergyType.Sunlight ? 1 : -1;
+		UpdateHeat (dir * addedEnergy * heatFactor);
 	}
 
-	void UpdateHeat(float addedHeat) {
+	void UpdateHeat (float addedHeat)
+	{
 		currentTemperature += addedHeat;
 		currentTemperature = Mathf.Clamp (currentTemperature, 0, maximumHeat);
 		float normalizedBurn = (currentTemperature - burningThreshold) / (maximumHeat - burningThreshold);
 		ChangeHeat (normalizedBurn);
 	}
 
-	void Update() {
+	void Update ()
+	{
 		UpdateHeat (heatLossPerSecond * Time.deltaTime);
 	}
 }
