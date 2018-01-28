@@ -1,0 +1,8 @@
+Fire - +
+Rain - +
+Sun - +
+Good day - +
+Normal day - +
+Bad day - +
+Dry - +
+
