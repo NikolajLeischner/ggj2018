@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1856226194190046}
   m_LocalRotation: {x: 0.5791992, y: -0.5791992, z: -0.4056209, w: 0.4056209}
-  m_LocalPosition: {x: 0.040000025, y: 0.7300001, z: 0.32000002}
+  m_LocalPosition: {x: 0.04, y: 1.647, z: 0.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4351170333018640}
@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flames: {fileID: 198567657608568582}
+  audioSource: {fileID: 0}
   maxEmissionRate: 20
 --- !u!114 &114751050569007884
 MonoBehaviour:
@@ -207,9 +208,9 @@ MonoBehaviour:
   secondaryColor: {r: 0.36520103, g: 0.8088235, b: 0.1903114, a: 1}
   burntColor: {r: 0.43359977, g: 0.4705882, b: 0.36332178, a: 1}
   energyConsumptionPerSecond: 20
-  maximumEnergy: 500
+  maximumEnergy: 1000
   energy: 0
-  burningThreshold: 150
+  burningThreshold: 300
   currentTemperature: 0
 --- !u!198 &198567657608568582
 ParticleSystem:

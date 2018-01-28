@@ -2754,6 +2754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenes:
   - Level-1
+  - Level-2
   startScene: Start-Screen
   creditsScene: Credits-Screen
 --- !u!4 &2043520833
