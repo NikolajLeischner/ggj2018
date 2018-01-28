@@ -9,4 +9,8 @@ public class GameMenu : MonoBehaviour
 	{
 		Scenes.INSTANCE.ReloadCurrentLevel ();
 	}
+
+	public void Exit() {
+		Application.Quit ();
+	}
 }

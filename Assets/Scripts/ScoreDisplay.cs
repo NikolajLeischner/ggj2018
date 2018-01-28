@@ -33,10 +33,10 @@ public class ScoreDisplay : MonoBehaviour
 		StartCoroutine (ShowText (7f, awardedTitle, titleText, 6f));
 
 		string score = "" + Mathf.FloorToInt (actualScore);
-		StartCoroutine (ShowText (8f, score, scoreText, 5f));
+		StartCoroutine (ShowText (8f, score, scoreText, 5f, true));
 	}
 
-	IEnumerator ShowText (float initialDelay, string text, Text display, float fadeoutAfter)
+	IEnumerator ShowText (float initialDelay, string text, Text display, float fadeoutAfter, bool loadNextLevel = false)
 	{
 		yield return new WaitForSeconds (initialDelay);
 
@@ -54,6 +54,10 @@ public class ScoreDisplay : MonoBehaviour
 		}
 
 		display.gameObject.SetActive (false);
+
+		if (loadNextLevel)
+			Scenes.INSTANCE.LoadNextLevel ();
+
 		yield return null;
 	}
 }

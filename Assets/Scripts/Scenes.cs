@@ -57,7 +57,7 @@ public class Scenes : MonoBehaviour
 		if (currentScene < scenes.Length - 1)
 			SceneManager.LoadScene (scenes [currentScene]);
 		else
-			ShowStart ();
+			ShowCredits ();
 		levelInProgress = true;
 	}
 }
