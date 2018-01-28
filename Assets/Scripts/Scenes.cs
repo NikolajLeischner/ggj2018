@@ -17,6 +17,8 @@ public class Scenes : MonoBehaviour
 
 	public static Scenes INSTANCE;
 
+	bool levelInProgress = true;
+
 	void Awake ()
 	{
 		DontDestroyOnLoad (this);
@@ -24,18 +26,29 @@ public class Scenes : MonoBehaviour
 			INSTANCE = this;
 	}
 
+	public bool GameIsRunning() {
+		return levelInProgress;
+	}
+
+	public void EndLevel() {
+		levelInProgress = false;
+	}
+
 	public void ShowStart ()
 	{
 		SceneManager.LoadScene (startScene);
+		levelInProgress = true;
 	}
 
 	public void ShowCredits ()
 	{
 		SceneManager.LoadScene (creditsScene);
+		levelInProgress = true;
 	}
 
 	public void ReloadCurrentLevel() {
 		SceneManager.LoadScene (scenes [currentScene]);
+		levelInProgress = true;
 	}
 
 	public void LoadNextLevel ()
@@ -45,5 +58,6 @@ public class Scenes : MonoBehaviour
 			SceneManager.LoadScene (scenes [currentScene]);
 		else
 			ShowStart ();
+		levelInProgress = true;
 	}
 }
