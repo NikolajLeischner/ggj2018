@@ -28,7 +28,6 @@ public class SourceController : MonoBehaviour
 	public void MoveToRandomPosition ()
 	{
 		float randomPosition = Random.Range (boundaries.Left (), boundaries.Right ());
-		float middle = (boundaries.Top () + boundaries.Bottom ()) * 0.5f;
 		UpdatePosition (randomPosition, transform.position.y);
 	}
 

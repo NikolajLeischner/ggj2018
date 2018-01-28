@@ -12,10 +12,8 @@ public class EnergyEmitter : MonoBehaviour
 {
 
 	public float emissionPerSecond = 100;
-	public float initialEnergy = 0;
-	public EnergyType energyType = EnergyType.Sunlight;
 
-	float remainingEnergy;
+	public EnergyType energyType = EnergyType.Sunlight;
 
 	public Light spotLight;
 
@@ -27,17 +25,8 @@ public class EnergyEmitter : MonoBehaviour
 
 	public void initialize (float startEnergy)
 	{
-		initialEnergy = startEnergy;
-		remainingEnergy = initialEnergy;
 		if (spotLight)
 			initialColor = spotLight.color;
-	}
-
-	void UpdateColor ()
-	{
-		float percentage = remainingEnergy / initialEnergy;
-		if (spotLight)
-			spotLight.color = Color.Lerp (finalColor, initialColor, percentage);
 	}
 
 	public EnergyType GetEnergyType ()
@@ -45,12 +34,14 @@ public class EnergyEmitter : MonoBehaviour
 		return energyType;
 	}
 
-	public void Toggle(bool active) {
+	public void Toggle (bool active)
+	{
 		isActive = active;
 	}
 
-	public bool IsEmitting() {
-		return isActive && (remainingEnergy > 0);
+	public bool IsEmitting ()
+	{
+		return isActive;
 	}
 
 	public float TransmitEnergy ()

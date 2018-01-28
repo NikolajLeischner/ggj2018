@@ -17,9 +17,9 @@ public class HeatEffects : MonoBehaviour
 
 	float heatFactor = 0.25f;
 
-	float maximumHeat = 3500f;
+	float maximumHeat = 500f;
 
-	float heatLossPerSecond = -10f;
+	float heatLossPerSecond = -2f;
 
 	public void ChangeHeat (float heat)
 	{

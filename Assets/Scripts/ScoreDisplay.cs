@@ -27,8 +27,8 @@ public class ScoreDisplay : MonoBehaviour
 		StartCoroutine (ShowText (0, anouncementOne, scoreAnouncement, 3f));
 		StartCoroutine (ShowText (5f, anouncementTwo, scoreAnouncementTwo, 3f));
 
-		float percentage = actualScore / maximumScore;
-		int position = Mathf.FloorToInt (scoreTexts.Length * percentage);
+		float percentage = actualScore / Mathf.Min(maximumScore, actualScore);
+		int position = Mathf.Max(0, Mathf.FloorToInt (scoreTexts.Length * percentage - 1));
 		string awardedTitle = scoreTexts [position];
 		StartCoroutine (ShowText (7f, awardedTitle, titleText, 6f));
 

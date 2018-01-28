@@ -11,8 +11,8 @@ public class EarthTree : EnergyReceiver
 	public MeshRenderer treeMesh;
 	public float maxEnergy = 2000;
 	public Color color = Color.green;
-	public float height = 1;
-	public float width = 1;
+	Vector3 initialScale;
+	Vector3 maximumScale;
 	float energyConsumptionPerSecond = 20;
 	float waterConsumptionPerSecond = 20;
 	float heightFactor = 0.05f;
@@ -20,9 +20,6 @@ public class EarthTree : EnergyReceiver
 	float lifeStatus = 4f;
 	public StatusBar sunStatus;
 	public StatusBar waterStatus;
-
-	float maxHeight = 1;
-	float maxWidth = 1;
 
 	// audio
 	public AudioClip burning;
@@ -42,8 +39,11 @@ public class EarthTree : EnergyReceiver
 
 	void Start ()
 	{
-		height = parent.localScale.y;
-		width = parent.localScale.x;
+		energyConsumptionPerSecond = Random.Range (energyConsumptionPerSecond * 0.3f, energyConsumptionPerSecond * 2f);
+		waterConsumptionPerSecond = Random.Range (waterConsumptionPerSecond * 0.3f, waterConsumptionPerSecond * 2f);
+		initialScale = parent.localScale;
+		maximumScale = initialScale * 2;
+
 		// keep the total energy to 1500 to be healthy
 		sunEnergy = 1000f;  
 		rainEnergy = 500f;
@@ -98,16 +98,9 @@ public class EarthTree : EnergyReceiver
 
 	private void UpdateGrowth ()
 	{
-		if (height < maxHeight) {
-			height = height + heightFactor * Time.deltaTime;
-		}
-		if (width < maxWidth) {
-			width = width + widthFactor * Time.deltaTime;
-		}
-		Debug.Log (height);
-		// compute the scale
-		var scale = parent.localScale;
-		parent.localScale = new Vector3 (width, height, scale.z);
+		Vector3 growth = new Vector3 (widthFactor, heightFactor, widthFactor) * Time.deltaTime;
+		Vector3 tentativeSize = parent.localScale + growth;
+		parent.localScale = Vector3.Min (tentativeSize, maximumScale);
 	}
 
 	private void ComputeColor()
@@ -170,10 +163,6 @@ public class EarthTree : EnergyReceiver
 		}
 	}
 
-	public float Remap (float value, float from1, float to1, float from2, float to2) {
-		return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
-	}
-
 	private void PlaySound(AudioClip clip) {
 		mySource.clip = clip;
 		mySource.Play ();
@@ -182,20 +171,5 @@ public class EarthTree : EnergyReceiver
 	public float getLifeStatus()
 	{
 		return lifeStatus;
-	}
-
-	public float GetHeight ()
-	{
-		return height;
-	}
-
-	public Color GetColor ()
-	{
-		return color;
-	}
-
-	public float GetSunEnergy ()
-	{
-		return sunEnergy;
 	}
 }
