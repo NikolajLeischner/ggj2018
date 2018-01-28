@@ -1,85 +1,20 @@
 fileFormatVersion: 2
-guid: a6e9c9de28c35214398c4970d6655682
-timeCreated: 1517083176
+guid: 32bdce11857559c4a80811594e2a4793
+timeCreated: 1517142425
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     100002: polySurface1
-    100004: polySurface3
-    100006: pSphere1
-    100008: pSphere10
-    100010: pSphere11
-    100012: pSphere12
-    100014: pSphere13
-    100016: pSphere14
-    100018: pSphere15
-    100020: pSphere2
-    100022: pSphere3
-    100024: pSphere4
-    100026: pSphere5
-    100028: pSphere6
-    100030: pSphere7
-    100032: pSphere8
-    100034: pSphere9
-    100036: transform1
-    100038: transform10
-    100040: transform11
-    100042: transform12
-    100044: transform13
-    100046: transform2
-    100048: transform3
-    100050: transform4
-    100052: transform5
-    100054: transform6
-    100056: transform7
-    100058: transform8
-    100060: transform9
+    100004: transform1
     400000: //RootNode
     400002: polySurface1
-    400004: polySurface3
-    400006: pSphere1
-    400008: pSphere10
-    400010: pSphere11
-    400012: pSphere12
-    400014: pSphere13
-    400016: pSphere14
-    400018: pSphere15
-    400020: pSphere2
-    400022: pSphere3
-    400024: pSphere4
-    400026: pSphere5
-    400028: pSphere6
-    400030: pSphere7
-    400032: pSphere8
-    400034: pSphere9
-    400036: transform1
-    400038: transform10
-    400040: transform11
-    400042: transform12
-    400044: transform13
-    400046: transform2
-    400048: transform3
-    400050: transform4
-    400052: transform5
-    400054: transform6
-    400056: transform7
-    400058: transform8
-    400060: transform9
+    400004: transform1
     2100000: lambert1
     2300000: polySurface1
-    2300002: polySurface3
-    2300004: pSphere10
-    2300006: pSphere15
     3300000: polySurface1
-    3300002: polySurface3
-    3300004: pSphere10
-    3300006: pSphere15
     4300000: polySurface1
-    4300002: polySurface3
-    4300004: pSphere10
-    4300006: pSphere15
     9500000: //RootNode
   externalObjects: {}
   materials:
