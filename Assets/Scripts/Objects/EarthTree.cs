@@ -12,13 +12,16 @@ public class EarthTree : EnergyReceiver
 	public Color color = Color.green;
 	Vector3 initialScale;
 	Vector3 maximumScale;
-	float energyConsumptionPerSecond = 10;
-	float waterConsumptionPerSecond = 10;
+	float energyConsumptionPerSecond = 1;
+	float waterConsumptionPerSecond = 1;
 	float heightFactor = 0.05f;
 	float widthFactor = 0.03f;
 	public float lifeStatus = 4f;
 	public StatusBar sunStatus;
 	public StatusBar waterStatus;
+
+	public GameObject treeAlive;
+	public GameObject treeDead;
 
 	void Start ()
 	{
@@ -81,8 +84,8 @@ public class EarthTree : EnergyReceiver
 
 	private void ConsumeEnergy ()
 	{
-		sunEnergy = sunEnergy - energyConsumptionPerSecond * Time.deltaTime;
-		rainEnergy = rainEnergy - waterConsumptionPerSecond * Time.deltaTime;
+		sunEnergy = sunEnergy - energyConsumptionPerSecond;
+		rainEnergy = rainEnergy - waterConsumptionPerSecond;
 	}
 
 	private void UpdateGrowth ()
@@ -101,9 +104,15 @@ public class EarthTree : EnergyReceiver
 
 	private void UpdateLifeStatus()
 	{
+		float oldLifeStatus = lifeStatus;
 		int rainHealth = getWaterHealth ();
 		int sunHealth = getSunHealth ();
 		lifeStatus = (rainHealth + sunHealth) / 2;
+
+		if (lifeStatus <= 0 && oldLifeStatus > 0) {
+			treeDead.SetActive (true);
+			treeAlive.SetActive (false);
+		}
 	}
 
 	private int getWaterHealth()
@@ -150,6 +159,10 @@ public class EarthTree : EnergyReceiver
 		} else {
 			return 0;
 		}
+	}
+
+	public bool HasMaximumSize() {
+		return Vector3.Distance (parent.localScale, maximumScale) < 0.1f;
 	}
 
 	public float getLifeStatus()

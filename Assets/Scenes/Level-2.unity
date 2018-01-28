@@ -203,6 +203,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114971590174057386, guid: 60655cc16b8ff4ffb9b37fd1ee66c0d9,
+        type: 2}
+      propertyPath: scoreTexts.Array.data[0]
+      value: A great person
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60655cc16b8ff4ffb9b37fd1ee66c0d9, type: 2}
   m_IsPrefabParent: 0
@@ -1425,7 +1430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc33b7e469eb40b19f9c9eeea328a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emissionPerSecond: 100
+  emissionPerSecond: 400
   energyType: 1
   spotLight: {fileID: 0}
 --- !u!114 &1403600287
@@ -2193,7 +2198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc33b7e469eb40b19f9c9eeea328a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emissionPerSecond: 100
+  emissionPerSecond: 200
   energyType: 0
   spotLight: {fileID: 1635448027}
 --- !u!65 &1780006677
