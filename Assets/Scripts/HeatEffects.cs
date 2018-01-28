@@ -17,7 +17,7 @@ public class HeatEffects : MonoBehaviour
 
 	float heatFactor = 0.25f;
 
-	float maximumHeat = 400f;
+	float maximumHeat = 3500f;
 
 	float heatLossPerSecond = -10f;
 
@@ -38,7 +38,7 @@ public class HeatEffects : MonoBehaviour
 
 	public void AddEnergy (float addedEnergy, EnergyType energyType)
 	{
-		float dir = energyType == EnergyType.Sunlight ? 1 : 0;
+		float dir = energyType == EnergyType.Sunlight ? 1 : -1;
 		UpdateHeat (dir * addedEnergy * heatFactor);
 	}
 
