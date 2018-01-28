@@ -12,8 +12,8 @@ public class EarthTree : EnergyReceiver
 	public Color color = Color.green;
 	Vector3 initialScale;
 	Vector3 maximumScale;
-	float energyConsumptionPerSecond = 20;
-	float waterConsumptionPerSecond = 20;
+	float energyConsumptionPerSecond = 10;
+	float waterConsumptionPerSecond = 10;
 	float heightFactor = 0.05f;
 	float widthFactor = 0.03f;
 	public float lifeStatus = 4f;
@@ -53,7 +53,7 @@ public class EarthTree : EnergyReceiver
 
 	public void updateRainEnergy(float addedEnergy)
 	{
-		rainEnergy += addedEnergy;
+		rainEnergy += addedEnergy ;
 		sunEnergy -= addedEnergy;
 	}
 

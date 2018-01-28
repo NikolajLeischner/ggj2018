@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour {
 			foreach (EarthTree tree in trees) {
 				score += tree.getLifeStatus ();
 			}
-			Debug.Log ("Score: " + score);
+			//Debug.Log ("Score: " + score);
  			yield return new WaitForSeconds (1);
 		}
 		yield return null;

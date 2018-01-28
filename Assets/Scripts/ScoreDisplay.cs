@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ScoreDisplay : MonoBehaviour
 {
 	// The first text is shown for the worst outcome, the last for the best.
-	public string[] scoreTexts = { "Not a nice person", "Sun God", "Tree Lover" };
+	public string[] scoreTexts = { "Tree Lover", "Sun God", "great" };
 	public string anouncementOne = "Time is up. Now, what shall I call you?";
 	public string anouncementTwo = "To me, you are:";
 
@@ -26,7 +26,7 @@ public class ScoreDisplay : MonoBehaviour
 	{
 		StartCoroutine (ShowText (0, anouncementOne, scoreAnouncement, 3f));
 		StartCoroutine (ShowText (5f, anouncementTwo, scoreAnouncementTwo, 3f));
-
+		Debug.Log (maximumScore);
 		float percentage = actualScore / Mathf.Max(maximumScore, actualScore);
 		int position = Mathf.Max(0, Mathf.FloorToInt (scoreTexts.Length * percentage - 1));
 		string awardedTitle = scoreTexts [position];
