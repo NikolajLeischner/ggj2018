@@ -7,6 +7,8 @@ public class HeatEffects : MonoBehaviour
 
 	public ParticleSystem flames;
 
+	public AudioSource audioSource;
+
 	public float maxEmissionRate = 20;
 
 	float minEmissionRate = 0.1f;
@@ -21,8 +23,6 @@ public class HeatEffects : MonoBehaviour
 
 	float heatLossPerSecond = -2f;
 
-	public EarthTree earthTree;
-
 	public void ChangeHeat (float heat)
 	{
 		float normalisedHeat = Mathf.Clamp (heat, 0, 1);
@@ -33,13 +33,15 @@ public class HeatEffects : MonoBehaviour
 			var rateOverTime = emission.rateOverTime;
 			rateOverTime.constant = newRate;
 			emission.rateOverTime = rateOverTime;
-			if (earthTree)
-				earthTree.PlaySound ();
+			if (audioSource && !audioSource.isPlaying) {
+				audioSource.pitch = Random.Range (0.7f, 1.0f);
+				audioSource.Play ();
+			}
 
 		} else {
 			flames.gameObject.SetActive (false);
-			if (earthTree)
-				earthTree.StopSound ();
+			if (audioSource)
+				audioSource.Stop ();
 		}
 	}
 

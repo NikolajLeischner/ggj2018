@@ -20,10 +20,6 @@ public class EarthTree : EnergyReceiver
 	public StatusBar sunStatus;
 	public StatusBar waterStatus;
 
-	// audio
-	public AudioClip burning;
-	public AudioSource mySource;
-
 	void Start ()
 	{
 		energyConsumptionPerSecond = Random.Range (energyConsumptionPerSecond * 0.3f, energyConsumptionPerSecond * 2f);
@@ -156,17 +152,6 @@ public class EarthTree : EnergyReceiver
 		}
 	}
 
-	public void PlaySound() {
-		if (mySource.isPlaying == false) {
-			mySource.Play ();
-		};
-	}
-
-	public void StopSound() {
-		if (mySource.isPlaying == true) {
-			mySource.Stop ();
-		};
-	}
 	public float getLifeStatus()
 	{
 		return lifeStatus;

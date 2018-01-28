@@ -1722,9 +1722,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a8f4f1ee7d8bd4bfea9c001dbf084901, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1844,8 +1844,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flames: {fileID: 198277371866055670}
+  audioSource: {fileID: 82845254197883494}
   maxEmissionRate: 20
-  earthTree: {fileID: 114813707074384978}
 --- !u!114 &114813707074384978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1866,8 +1866,6 @@ MonoBehaviour:
   lifeStatus: 4
   sunStatus: {fileID: 114094796210296894}
   waterStatus: {fileID: 114876057303612508}
-  burning: {fileID: 8300000, guid: a8f4f1ee7d8bd4bfea9c001dbf084901, type: 3}
-  mySource: {fileID: 82845254197883494}
 --- !u!114 &114876057303612508
 MonoBehaviour:
   m_ObjectHideFlags: 1

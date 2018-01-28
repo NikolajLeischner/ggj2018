@@ -20,6 +20,17 @@ public class SourceController : MonoBehaviour
 
 	bool isActive = true;
 
+	public AudioSource movementSound;
+
+	public float activeVolume = 0.25f;
+
+	public float backgroundVolume = 0.1f;
+
+	void Start() {
+		if (movementSound)
+			movementSound.volume = backgroundVolume;
+	}
+
 	public void Toggle (bool active)
 	{
 		isActive = active;
@@ -41,7 +52,7 @@ public class SourceController : MonoBehaviour
 
 	void Update ()
 	{
-		if (isActive) {
+		if (isActive && Scenes.INSTANCE.GameIsRunning()) {
 			float horizontal = 0;
 			if (Input.GetKey (moveLeft))
 				horizontal = -1;
@@ -54,11 +65,16 @@ public class SourceController : MonoBehaviour
 				vertical = 1;
 
 			if (horizontal != 0) {
+				if (movementSound)
+					movementSound.volume = activeVolume;
 				float movementX = horizontal * horizontalSpeed * Time.deltaTime;
 				float movementY = vertical * verticalSpeed * Time.deltaTime;
 				float tentativeX = transform.position.x + movementX;
 				float tentativeY = transform.position.y + movementY;
 				UpdatePosition (tentativeX, tentativeY);
+			} else {
+				if (movementSound)
+					movementSound.volume = backgroundVolume;
 			}
 		}
 	}
