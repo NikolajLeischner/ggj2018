@@ -12,8 +12,8 @@ public class EarthTree : EnergyReceiver
 	public Color color = Color.green;
 	Vector3 initialScale;
 	Vector3 maximumScale;
-	float energyConsumptionPerSecond = 20;
-	float waterConsumptionPerSecond = 20;
+	float energyConsumptionPerSecond = 1;
+	float waterConsumptionPerSecond = 1;
 	float heightFactor = 0.05f;
 	float widthFactor = 0.03f;
 	public float lifeStatus = 4f;
@@ -150,6 +150,10 @@ public class EarthTree : EnergyReceiver
 		} else {
 			return 0;
 		}
+	}
+
+	public bool HasMaximumSize() {
+		return Vector3.Distance (parent.localScale, maximumScale) < 0.1f;
 	}
 
 	public float getLifeStatus()

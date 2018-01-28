@@ -51,10 +51,15 @@ public class Scenes : MonoBehaviour
 		levelInProgress = true;
 	}
 
+	public void LoadFirstLevel() {
+		currentScene = -1;
+		LoadNextLevel ();
+	}
+
 	public void LoadNextLevel ()
 	{
 		currentScene += 1;
-		if (currentScene < scenes.Length - 1)
+		if (currentScene < scenes.Length)
 			SceneManager.LoadScene (scenes [currentScene]);
 		else
 			ShowCredits ();
