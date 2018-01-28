@@ -41,7 +41,7 @@ public class StatusBar : MonoBehaviour {
 		}
 
 		float newScale = Mathf.Lerp (minScale, maxScale, percentage);
-		var scale = barHandle.transform.lossyScale;
+		var scale = barHandle.transform.localScale;
 		barHandle.transform.localScale = new Vector3 (newScale, scale.y, scale.z);
 	}
 }
