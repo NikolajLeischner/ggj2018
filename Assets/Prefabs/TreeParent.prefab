@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 114813707074384978}
   - component: {fileID: 136245469455193164}
   - component: {fileID: 114599403921733896}
+  - component: {fileID: 82845254197883494}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -1710,6 +1711,86 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &82845254197883494
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1268007089902668}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a8f4f1ee7d8bd4bfea9c001dbf084901, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114040171005061646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1763,6 +1844,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flames: {fileID: 198277371866055670}
+  maxEmissionRate: 20
+  earthTree: {fileID: 114813707074384978}
 --- !u!114 &114813707074384978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1777,23 +1860,14 @@ MonoBehaviour:
   parent: {fileID: 4004003057485990}
   sunEnergy: 0
   rainEnergy: 0
-  energy: 2000
   treeMesh: {fileID: 23705131163106298}
   maxEnergy: 2000
   color: {r: 0, g: 0, b: 0, a: 0}
-  height: 1
-  width: 1
+  lifeStatus: 4
   sunStatus: {fileID: 114094796210296894}
   waterStatus: {fileID: 114876057303612508}
   burning: {fileID: 8300000, guid: a8f4f1ee7d8bd4bfea9c001dbf084901, type: 3}
-  isBuringPlay: 0
-  healthy: {fileID: 8300000, guid: f997a20542eaa4dc69ff29d290514745, type: 3}
-  isHealthyPlay: 0
-  critical: {fileID: 8300000, guid: 9f9563c0b6f7d439b9f331e5755bc591, type: 3}
-  isCriticalPlay: 0
-  dying: {fileID: 8300000, guid: 217db9e8fcb7f4487b84d335e86d7579, type: 3}
-  isDyingPlay: 0
-  isPlaying: 0
+  mySource: {fileID: 82845254197883494}
 --- !u!114 &114876057303612508
 MonoBehaviour:
   m_ObjectHideFlags: 1

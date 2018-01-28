@@ -22,19 +22,7 @@ public class EarthTree : EnergyReceiver
 
 	// audio
 	public AudioClip burning;
-	public bool isBuringPlay;
-
-	public AudioClip healthy;
-	public bool isHealthyPlay;
-
-	public AudioClip critical;
-	public bool isCriticalPlay;
-
-	public AudioClip dying;
-	public bool isDyingPlay;
-
-	public bool isPlaying;
-	AudioSource mySource;
+	public AudioSource mySource;
 
 	void Start ()
 	{
@@ -52,6 +40,7 @@ public class EarthTree : EnergyReceiver
 		float criticalThreshold = 50;
 		sunStatus.Initialse (criticalThreshold, maxEnergy, sunEnergy);
 		waterStatus.Initialse (criticalThreshold, maxEnergy, rainEnergy);
+
 	}
 
 	override public void AddEnergy (float addedEnergy, EnergyType energyType)
@@ -167,11 +156,17 @@ public class EarthTree : EnergyReceiver
 		}
 	}
 
-	private void PlaySound(AudioClip clip) {
-		mySource.clip = clip;
-		mySource.Play ();
+	public void PlaySound() {
+		if (mySource.isPlaying == false) {
+			mySource.Play ();
+		};
 	}
 
+	public void StopSound() {
+		if (mySource.isPlaying == true) {
+			mySource.Stop ();
+		};
+	}
 	public float getLifeStatus()
 	{
 		return lifeStatus;

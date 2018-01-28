@@ -21,6 +21,8 @@ public class HeatEffects : MonoBehaviour
 
 	float heatLossPerSecond = -2f;
 
+	public EarthTree earthTree;
+
 	public void ChangeHeat (float heat)
 	{
 		float normalisedHeat = Mathf.Clamp (heat, 0, 1);
@@ -31,8 +33,13 @@ public class HeatEffects : MonoBehaviour
 			var rateOverTime = emission.rateOverTime;
 			rateOverTime.constant = newRate;
 			emission.rateOverTime = rateOverTime;
+			if (earthTree)
+				earthTree.PlaySound ();
+
 		} else {
 			flames.gameObject.SetActive (false);
+			if (earthTree)
+				earthTree.StopSound ();
 		}
 	}
 
