@@ -55,16 +55,6 @@ public class EnergyEmitter : MonoBehaviour
 
 	public float TransmitEnergy ()
 	{
-		if (isActive) {
-			float demand = emissionPerSecond * Time.deltaTime;
-			float provided = Mathf.Min (remainingEnergy, demand);
-			remainingEnergy = Mathf.Max (0, remainingEnergy - provided);
-
-			UpdateColor ();
-
-			return provided;
-		} else {
-			return 0;
-		}
+		return emissionPerSecond * Time.deltaTime;
 	}
 }
