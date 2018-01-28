@@ -7,7 +7,6 @@ public class EarthTree : EnergyReceiver
 	public Transform parent; // Scale the parent object, so the tree grows in one direction.
 	public float sunEnergy = 0f;
 	public float rainEnergy = 0f;
-	public float energy = 0f;
 	public MeshRenderer treeMesh;
 	public float maxEnergy = 2000;
 	public Color color = Color.green;
@@ -17,7 +16,7 @@ public class EarthTree : EnergyReceiver
 	float waterConsumptionPerSecond = 20;
 	float heightFactor = 0.05f;
 	float widthFactor = 0.03f;
-	float lifeStatus = 4f;
+	public float lifeStatus = 4f;
 	public StatusBar sunStatus;
 	public StatusBar waterStatus;
 
@@ -71,14 +70,17 @@ public class EarthTree : EnergyReceiver
 	{
 		rainEnergy += addedEnergy;
 		sunEnergy -= addedEnergy;
+	}
+
+	public void updateStatusBar(){
 		waterStatus.UpdateStatus (rainEnergy);
+		sunStatus.UpdateStatus (sunEnergy);
 	}
 
 	public void updateSunEnergy(float addedEnergy)
 	{
 		sunEnergy += addedEnergy;
 		rainEnergy -= addedEnergy;
-		sunStatus.UpdateStatus (sunEnergy);
 	}
 
 	void Update ()
@@ -88,6 +90,8 @@ public class EarthTree : EnergyReceiver
 			ComputeColor();
 			UpdateLifeStatus ();
 		}
+
+		updateStatusBar ();
 	}
 
 	private void ConsumeEnergy ()
@@ -105,7 +109,7 @@ public class EarthTree : EnergyReceiver
 
 	private void ComputeColor()
 	{
-		float hue = sunEnergy / maxEnergy;
+		float hue = lifeStatus / 8;
 		color = Color.Lerp(Color.black, Color.green, hue);
 		treeMesh.material.color = color;
 	}
