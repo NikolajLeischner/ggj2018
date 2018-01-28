@@ -20,6 +20,9 @@ public class EarthTree : EnergyReceiver
 	public StatusBar sunStatus;
 	public StatusBar waterStatus;
 
+	public GameObject treeAlive;
+	public GameObject treeDead;
+
 	void Start ()
 	{
 		energyConsumptionPerSecond = Random.Range (energyConsumptionPerSecond * 0.3f, energyConsumptionPerSecond * 2f);
@@ -101,9 +104,15 @@ public class EarthTree : EnergyReceiver
 
 	private void UpdateLifeStatus()
 	{
+		float oldLifeStatus = lifeStatus;
 		int rainHealth = getWaterHealth ();
 		int sunHealth = getSunHealth ();
 		lifeStatus = (rainHealth + sunHealth) / 2;
+
+		if (lifeStatus <= 0 && oldLifeStatus > 0) {
+			treeDead.SetActive (true);
+			treeAlive.SetActive (false);
+		}
 	}
 
 	private int getWaterHealth()
